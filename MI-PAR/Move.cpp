@@ -10,7 +10,7 @@ Move::Move(int from_, int to_){
     
 }
 
-const bool Move::isReverse(const Move &t){//vhodne pro kontrolu 1 cyklu
+bool Move::isReverse(const Move &t) const{//vhodne pro kontrolu 1 cyklu
     return ((this->from==t.to)&&(this->to==t.from));    
 }
 

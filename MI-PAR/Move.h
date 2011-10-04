@@ -15,13 +15,12 @@ private:
     int from;
     int to;  
 public:
-    inline const int getFrom() {return from;}
-    inline const int getTo() {return to;}
     Move(int,int);
-    const bool isReverse(const Move &);
+    inline int getFrom() const {return from;}
+    inline int getTo() const {return to;}    
+    bool isReverse(const Move &) const;
     friend ostream& operator<< (ostream& ,const Move & );
 };
-
 
 #endif	/* Move_H */
 

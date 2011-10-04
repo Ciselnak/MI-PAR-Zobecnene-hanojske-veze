@@ -1,23 +1,34 @@
 #include "Board.h"
 
 Board::Board(int number) {
+    if (number <= 0) throw"zaporny pocet vezi!!";
+
     towers = new vector < vector<int>*>;
     for (int i = 0; i < number; i++) {
         towers->push_back(new vector<int>);
     }
 }
 
-Board::Board(const Board& param){
-    throw "dodelat";    
-} 
-
-
-Board::~Board(){
-    for (vector< vector<int>* >::iterator it = towers->begin(); it!=towers->end(); ++it) {
-    delete *it;
+Board::Board(const Board& param) {
+    towers = new vector < vector<int>*>;
+    for (int i = 0; i < param.towers->size(); i++) {
+        towers->push_back(new vector<int>);
+    }
+    int i = -1;
+    for (vector< vector<int>* >::iterator it = param.towers->begin(); it != param.towers->end(); ++it) {
+        i++;
+        for (vector<int>::iterator iter = (*it)->begin(); iter != (*it)->end(); ++iter) {
+            (*towers)[i]->push_back(*iter);
+        }
+    }
 }
+
+Board::~Board() {
+    for (vector< vector<int>* >::iterator it = towers->begin(); it != towers->end(); ++it) {
+        delete *it;
+    }
     delete towers;
-    
+
 }
 
 /*
@@ -28,16 +39,15 @@ void Board::pushItem(int tower, int value) {
     (*towers)[tower]->push_back(value);
 }
 
-const int Board::size() {
+int Board::size() const{
     return this->towers->size();
 }
 
-/*overi zda je dany tah mozny
- 
+/*overi zda je dany tah mozny 
  */
-const bool Board::isMoveCorrect(Move& m) {
-  //  if(this->size)
-    
+ bool Board::isMoveCorrect(Move& m) const{
+    //  if(this->size)
+
     if ((*this->towers)[m.getFrom()]->empty()) {//beru z prazdne veze
         return false;
     }
@@ -52,7 +62,7 @@ const bool Board::isMoveCorrect(Move& m) {
     }
 }
 
-void Board::performMove(Move& move){
+void Board::performMove(Move& move) {
     int item = (*this->towers)[move.getFrom()]->back();
     (*this->towers)[move.getFrom()]->pop_back();
     (*this->towers)[move.getTo()]->push_back(item);
@@ -61,7 +71,7 @@ void Board::performMove(Move& move){
 /*
  vypise veze po radcich...slo by upravit aby vypadalo lepe
  */
-ostream& operator<<(ostream& os, Board &b) {
+ostream& operator<<(ostream& os,const Board &b) {
 
     for (int i = 0; i < b.size(); i++) {
         cout << i << ". vez:  ";
@@ -73,6 +83,6 @@ ostream& operator<<(ostream& os, Board &b) {
     return os;
 }
 
-bool Board::operator==(const Board & param){
-    throw "dodelat";
+bool Board::operator==(const Board & param) {
+    throw "dodelat operator== pokud ho budeme pouzivat";
 }

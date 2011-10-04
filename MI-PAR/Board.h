@@ -18,12 +18,12 @@ public:
     Board(int);
     Board(const Board&);
     virtual ~Board();
-    const bool isMoveCorrect(Move &);
+    bool isMoveCorrect(Move &) const;
     void performMove(Move &);
     void pushItem(int,int);
-    const int size(void);
+    int size(void) const;
     bool operator==(const Board& );
-    friend ostream& operator<<(ostream&, Board &);
+    friend ostream& operator<<(ostream&,const Board &);
    
     
 };
