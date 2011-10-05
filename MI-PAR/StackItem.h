@@ -12,12 +12,12 @@
 using namespace std;
 class StackItem{
 
-public:
+private:
     Move move;
     Board board;
     int dep;
-//public:
-    StackItem(const Board&, const Move&, int);    
+public:
+    StackItem(const Board&, const Move&, int);  
     inline int getDepth() const {return dep;};
     inline Move getMove() const {return move;};
     Board getBoard()const ;

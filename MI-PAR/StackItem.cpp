@@ -7,4 +7,3 @@ Board StackItem::getBoard() const{
     return board;
     
 }
-

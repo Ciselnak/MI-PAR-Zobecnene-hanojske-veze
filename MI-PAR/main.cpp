@@ -10,6 +10,7 @@
 #include "Move.h"
 #include "Board.h"
 #include "StackItem.h"
+#include "Solver.h"
 using namespace std;
 
 /*
@@ -30,11 +31,13 @@ int main(int argc, char** argv) {
     b->pushItem(2,5);
     b->pushItem(1,3);
     b->pushItem(0,3);
-     b->pushItem(5,22);
-   // cout<<*b;
-   
-    //cout<<*b;
+    b->pushItem(5,22);
+    Solver *s = new Solver(*b,5,2);
+    s->solve();
     
+    delete s;
+    delete b;
+  /*  
    StackItem *s = new StackItem(*b,*r,1);
    // (b->performMove(*(new Move(1,2))));
    cout<<s->getDepth()<<endl;
@@ -43,7 +46,7 @@ int main(int argc, char** argv) {
     Board bor = *b;
         bor.pushItem(5,7);
         cout<<b->getItems()<<endl;
-        cout<<bor.getItems()<<endl;
+        cout<<bor.getItems()<<endl;*/
     return 0;
     }catch (const char* ch) {
         cout<<ch<<endl;

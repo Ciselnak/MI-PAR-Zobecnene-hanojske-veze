@@ -6,6 +6,7 @@
                    projectFiles="true">
       <itemPath>Board.h</itemPath>
       <itemPath>Move.h</itemPath>
+      <itemPath>Solver.h</itemPath>
       <itemPath>StackItem.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -17,6 +18,7 @@
                    projectFiles="true">
       <itemPath>Board.cpp</itemPath>
       <itemPath>Move.cpp</itemPath>
+      <itemPath>Solver.cpp</itemPath>
       <itemPath>StackItem.cpp</itemPath>
       <itemPath>main.cpp</itemPath>
     </logicalFolder>
