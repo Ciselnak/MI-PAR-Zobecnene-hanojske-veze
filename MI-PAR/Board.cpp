@@ -7,6 +7,7 @@ Board::Board(int number) {
     for (int i = 0; i < number; i++) {
         towers->push_back(new vector<int>);
     }
+    this->items=0;
 }
 
 Board::Board(const Board& param) {
@@ -21,6 +22,7 @@ Board::Board(const Board& param) {
             (*towers)[i]->push_back(*iter);
         }
     }
+    this->items=param.items;
 }
 
 Board::~Board() {
@@ -37,6 +39,7 @@ Board::~Board() {
  */
 void Board::pushItem(int tower, int value) {
     (*towers)[tower]->push_back(value);
+    this->items++;
 }
 
 int Board::size() const{

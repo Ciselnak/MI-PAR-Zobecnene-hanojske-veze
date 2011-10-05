@@ -13,7 +13,7 @@ using namespace std;
 class Board{
 private: 
    vector <vector <int>* >* towers; 
-    
+   int items; 
 public:
     Board(int);
     Board(const Board&);
@@ -22,6 +22,7 @@ public:
     void performMove(Move &);
     void pushItem(int,int);
     int size(void) const;
+    inline int getItems(void){return items;};
     bool operator==(const Board& );
     friend ostream& operator<<(ostream&,const Board &);
    

@@ -18,9 +18,9 @@ public:
     int dep;
 //public:
     StackItem(const Board&, const Move&, int);    
-    inline int getDepth(){return dep;};
-    inline Move getMove(){return move;};
-    Board getBoard();
+    inline int getDepth() const {return dep;};
+    inline Move getMove() const {return move;};
+    Board getBoard()const ;
 };
 
 

@@ -40,13 +40,10 @@ int main(int argc, char** argv) {
    cout<<s->getDepth()<<endl;
    cout<<s->getBoard()<<endl;
   
-  /*  Board bor = *b;
-    cout<<*b<<endl;
-    bor.pushItem(5,7);
-    (*b).pushItem(4,88);
-    
-    cout<<bor<<endl;
-    cout<<*b<<endl;*/
+    Board bor = *b;
+        bor.pushItem(5,7);
+        cout<<b->getItems()<<endl;
+        cout<<bor.getItems()<<endl;
     return 0;
     }catch (const char* ch) {
         cout<<ch<<endl;
