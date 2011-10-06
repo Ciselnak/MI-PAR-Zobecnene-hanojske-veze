@@ -26,16 +26,16 @@ int main(int argc, char** argv) {
    // cout<<*r<<endl;
    
    
-    Board *b = new Board(6); 
-    b->pushItem(2,7);
-    b->pushItem(2,5);
-    b->pushItem(1,3);
-    b->pushItem(0,3);
-    b->pushItem(5,22);
-    Solver *s = new Solver(*b,5,2);
-    s->solve();
-    
-    delete s;
+    Board *b = new Board(5); 
+    b->pushItem(0,1);
+    b->pushItem(0,4);
+    b->pushItem(0,7);
+    b->pushItem(0,8);
+    b->pushItem(0,9); 
+  // Solver *s = new Solver(*b,5,2);
+   // s->solve();
+    cout<<b->isTowerComplete(2);
+   // delete s;
     delete b;
   /*  
    StackItem *s = new StackItem(*b,*r,1);

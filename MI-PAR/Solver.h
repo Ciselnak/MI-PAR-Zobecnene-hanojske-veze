@@ -21,7 +21,7 @@ private:
     int bestSolutionsDepth;
     int targetTower;
     
-    void expandItem(void);
+    void expandTop();
    // void backtrackMoves(void);//nevim jestli budu chtit....zatim asi ne
 public:
     Solver(const Board&, int, int);

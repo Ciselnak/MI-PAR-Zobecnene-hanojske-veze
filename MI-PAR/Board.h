@@ -21,6 +21,7 @@ public:
     bool isMoveCorrect(Move &) const;
     void performMove(Move &);
     void pushItem(int,int);
+    bool isTowerComplete(int) const;
     int size(void) const;
     inline int getItems(void){return items;};
     bool operator==(const Board& );

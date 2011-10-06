@@ -7,7 +7,7 @@ Board::Board(int number) {
     for (int i = 0; i < number; i++) {
         towers->push_back(new vector<int>);
     }
-    this->items=0;
+    this->items = 0;
 }
 
 Board::Board(const Board& param) {
@@ -22,7 +22,7 @@ Board::Board(const Board& param) {
             (*towers)[i]->push_back(*iter);
         }
     }
-    this->items=param.items;
+    this->items = param.items;
 }
 
 Board::~Board() {
@@ -42,13 +42,18 @@ void Board::pushItem(int tower, int value) {
     this->items++;
 }
 
-int Board::size() const{
+bool Board::isTowerComplete(int tower) const {
+    return (*towers)[tower]->size() == items; 
+
+}
+
+int Board::size() const {
     return this->towers->size();
 }
 
 /*overi zda je dany tah mozny 
  */
- bool Board::isMoveCorrect(Move& m) const{
+bool Board::isMoveCorrect(Move& m) const {
     //  if(this->size)
 
     if ((*this->towers)[m.getFrom()]->empty()) {//beru z prazdne veze
@@ -74,7 +79,7 @@ void Board::performMove(Move& move) {
 /*
  vypise veze po radcich...slo by upravit aby vypadalo lepe
  */
-ostream& operator<<(ostream& os,const Board &b) {
+ostream& operator<<(ostream& os, const Board &b) {
 
     for (int i = 0; i < b.size(); i++) {
         cout << i << ". vez:  ";
