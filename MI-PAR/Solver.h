@@ -20,7 +20,7 @@ private:
     int maxDepth;
     int bestSolutionsDepth;
     int targetTower;
-    
+       
     void expandTop();
    // void backtrackMoves(void);//nevim jestli budu chtit....zatim asi ne
 public:
