@@ -21,22 +21,33 @@ int main(int argc, char** argv) {
     cout<<"test"<<endl;
     Move *t =new Move(5,6);
     Move *r =new Move(6,7);
-    
+   
  //   cout<<*t<<endl;
    // cout<<*r<<endl;
    
-   
-    Board *b = new Board(5); 
-    b->pushItem(0,1);
+   //sem implantovat tabulku empirickejch hloubek
+    Board *b = new Board(3); 
     b->pushItem(0,4);
-    b->pushItem(0,7);
-    b->pushItem(0,8);
-    b->pushItem(0,9); 
-  // Solver *s = new Solver(*b,5,2);
-   // s->solve();
-    cout<<b->isTowerComplete(2);
-   // delete s;
-    delete b;
+    b->pushItem(0,3); 
+  //  b->pushItem(1,6);
+    b->pushItem(1,1); 
+    b->pushItem(2,5); 
+    b->pushItem(2,2); 
+   
+    cout<<*b<<endl;
+    Solver *s = new Solver(*b,2,20);
+    vector<Move> sol=s->solve();
+    if(sol.size()==0){
+      cout<<"Reseni v pozadovane hloubce nenalezeno."<<endl;  
+    }else{
+    cout<<"Solution:"<<endl;
+    for ( vector<Move>::iterator it=sol.begin() ; it < sol.end(); it++ ){
+    cout <<  *it<<endl;}
+    cout<<"Celkem tahu: "<<sol.size()<<endl;
+    }
+    
+    delete s;
+    delete b; 
   /*  
    StackItem *s = new StackItem(*b,*r,1);
    // (b->performMove(*(new Move(1,2))));
