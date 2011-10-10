@@ -4,9 +4,9 @@
  mohl by konrolovat zapornost souradnic
  */
 
-Move::Move(int from_, int to_){
-    this->from=from_;
-    this->to=to_;
+Move::Move(int f, int t){
+    this->from=f;
+    this->to=t;
     
 }
 
