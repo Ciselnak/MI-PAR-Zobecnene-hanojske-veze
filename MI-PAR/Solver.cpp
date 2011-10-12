@@ -33,6 +33,9 @@ void Solver::expandTop() {
                     delete m;
                     delete s;
                 }
+                else{
+                    delete m;
+                }
             }
         }
     }
