@@ -19,7 +19,7 @@ void Solver::expandTop() {
     for (int i = 0; i < act.size(); i++) {
         for (int j = 0; j < act.size(); j++) {
             if (i != j) {
-                Move *m = new Move(i, j);
+                Move *m = new Move(i, j, act.getTowerTop(i));
                 
                 if(m->isReverse(lastMov)){
                     delete m;
@@ -47,7 +47,7 @@ vector<Move> Solver::solve() {
     if (initState.isTowerComplete(targetTower)) {//zadani je rovnou reseni
         return *solution;
     }
-    Move *foo = new Move(0, 0);
+    Move *foo = new Move(0, 0,0);
     StackItem *s = new StackItem(initState, *foo, 0);
     delete foo;
     myStack->push(*s);
@@ -55,6 +55,7 @@ vector<Move> Solver::solve() {
     expandTop();
     int actualDepth = 1;
     //dalo by se prohledavat pouze do hloubky nejlepsiho prozatimniho reseni
+    //deje se tak    
     while (!myStack->empty()) {
       //  cout << "acualDept: " << actualDepth << endl;
        // cout << "StackItem dpth: " << myStack->top().getDepth() << endl;
@@ -86,7 +87,7 @@ vector<Move> Solver::solve() {
             
         }
         //mozne pridelat implementaci hledani jen do hloubky stavajiciho best reseni 
-        //asi hotovo....zrychlilo to priblizne 40x
+        //asi hotovo....
         if ((myStack->top().getDepth() == maxDepth)||((!(solution->size()==0))&&(myStack->top().getDepth()>solution->size()))) {
          //   cout<<"Delete - MaxDepth"<<endl;
             myStack->pop();

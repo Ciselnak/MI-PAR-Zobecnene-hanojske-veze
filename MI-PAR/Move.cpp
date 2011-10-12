@@ -4,9 +4,10 @@
  mohl by konrolovat zapornost souradnic
  */
 
-Move::Move(int f, int t){
+Move::Move(int f, int t, int v){
     this->from=f;
     this->to=t;
+    this->value=v;
     
 }
 
@@ -15,6 +16,6 @@ bool Move::isReverse(const Move &t) const{//vhodne pro kontrolu 1 cyklu
 }
 
 ostream& operator<<(ostream & os,const Move &t){
-    os<<t.from<<"->"<<t.to;
+    os<<t.value<<", "<<t.from<<"->"<<t.to;
     return os;
 }

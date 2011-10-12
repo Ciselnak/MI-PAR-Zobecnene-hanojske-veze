@@ -14,8 +14,9 @@ class Move{
 private: 
     int from;
     int to;  
+    int value;
 public:
-    Move(int,int);
+    Move(int,int, int);
     inline int getFrom() const {return from;}
     inline int getTo() const {return to;}    
     bool isReverse(const Move &) const;

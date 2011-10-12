@@ -47,6 +47,16 @@ bool Board::isTowerComplete(int tower) const {
 
 }
 
+int Board::getTowerTop(int tower) const{
+    if((*towers)[tower]->size()==0){
+        return 0;
+    }
+    else{
+    return *(*towers)[tower]->rbegin();
+    }
+    //return 2;
+}
+
 int Board::size() const {
     return this->towers->size();
 }

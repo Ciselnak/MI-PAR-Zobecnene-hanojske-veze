@@ -19,23 +19,24 @@ using namespace std;
 int main(int argc, char** argv) {
     try{
     cout<<"test"<<endl;
-    Move *t =new Move(5,6);
-    Move *r =new Move(6,7);
-   
+  
  //   cout<<*t<<endl;
    // cout<<*r<<endl;
    
    //sem implantovat tabulku empirickejch hloubek
     Board *b = new Board(3); 
-    b->pushItem(0,4);
-    b->pushItem(0,3); 
-  //  b->pushItem(1,6);
-    b->pushItem(1,1); 
-    b->pushItem(2,5); 
-    b->pushItem(2,2); 
+    b->pushItem(0,2);
+   // b->pushItem(1,9); 
+   // b->pushItem(1,6);
+   // b->pushItem(2,4); 
+    b->pushItem(1,5); 
+    b->pushItem(2,3); 
    
     cout<<*b<<endl;
-    Solver *s = new Solver(*b,2,20);
+    
+            
+    
+    Solver *s = new Solver(*b,0,30);
     vector<Move> sol=s->solve();
     if(sol.size()==0){
       cout<<"Reseni v pozadovane hloubce nenalezeno."<<endl;  
