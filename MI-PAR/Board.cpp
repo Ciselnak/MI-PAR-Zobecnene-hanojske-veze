@@ -42,6 +42,22 @@ void Board::pushItem(int tower, int value) {
     this->items++;
 }
 
+int Board::getDolniMez(int tower) const{
+    if((*towers)[tower]->size()==0){
+        return items;
+    }
+    
+    int dobre=0;
+    for(int i = items;i>0;i--){
+       // (*(*b.towers)[i])[j] 
+        if((*(*towers)[tower])[items-i]==i){
+            dobre+=1;
+        }
+    }
+    return ((*towers)[tower]->size()-dobre)*2 + items-(*towers)[tower]->size();
+  
+}
+
 bool Board::isTowerComplete(int tower) const {
     return (*towers)[tower]->size() == items; 
 

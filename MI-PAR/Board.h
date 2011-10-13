@@ -22,6 +22,7 @@ public:
     void performMove(Move &);
     void pushItem(int,int);
     bool isTowerComplete(int) const;
+    int getDolniMez(int)const;
     int getTowerTop(int) const;
     int size(void) const;
     inline int getItems(void){return items;};
