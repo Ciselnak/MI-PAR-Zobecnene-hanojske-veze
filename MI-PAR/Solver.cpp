@@ -29,9 +29,9 @@ void Solver::expandTop() {
                 if (act.isMoveCorrect(*m)) {
                     Board b = act;
                     b.performMove(*m);
-                     if((dept+b.getDolniMez(targetTower))>bestSolutionsDepth){//tady si pohrat s tim prorezavanim                          
+                     if((dept+b.getDolniMez(targetTower))>bestSolutionsDepth){                         
                          delete m;  
-                        // cout<<"d"<<dept+b.getDolniMez(targetTower)<<"fik"<<bestSolutionsDepth<<endl;
+                      // cout<<b<<"D"<<b.getDolniMez(targetTower)<<"fik"<<bestSolutionsDepth<<endl;
                          //cout<<act<<act.getDolniMez(targetTower)<<dept<<endl;
                          continue;
                                         }

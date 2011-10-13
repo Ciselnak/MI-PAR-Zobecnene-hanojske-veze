@@ -49,7 +49,9 @@ int Board::getDolniMez(int tower) const{
     
     int dobre=0;
     for(int i = items;i>0;i--){
-       // (*(*b.towers)[i])[j] 
+        if((items-i)>=(*towers)[tower]->size()){
+            continue;
+        }
         if((*(*towers)[tower])[items-i]==i){
             dobre+=1;
         }
