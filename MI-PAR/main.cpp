@@ -17,41 +17,54 @@ using namespace std;
  * main
  */
 int main(int argc, char** argv) {
-    try{
-    cout<<"test"<<endl;
-    //sem implantovat tabulku empirickejch hloubek
-    Board *b = new Board(4); 
-   b->pushItem(0,8);
-    b->pushItem(0,2);
-    b->pushItem(1,6);
-    b->pushItem(2,4);
-    b->pushItem(1,5);
-    b->pushItem(2,3);
-    b->pushItem(3,7);
-    b->pushItem(3,1); 
-    
-   
-   
-    
-    cout<<*b<<endl;
-    Solver *s = new Solver(*b,0,16);
-    vector<Move> sol=s->solve();
-    if(sol.size()==0){
-      cout<<"Reseni v pozadovane hloubce nenalezeno."<<endl;  
-    }else{
-    cout<<"Solution:"<<endl;
-    for ( vector<Move>::iterator it=sol.begin() ; it < sol.end(); it++ ){
-    cout <<  *it<<endl;}
-    cout<<"Celkem tahu: "<<sol.size()<<endl;
+    try {
+        cout << "test" << endl;
+        //sem implantovat tabulku empirickejch hloubek
+        //dodat výpočet horná meze pro stanovení hloubky prohledávání
+
+
+        Board *b = new Board(4);
+       
+    //   b->pushItem(0,3);
+    //    b->pushItem(0,1);
+   //    b->pushItem(1,2);
+        
+      // b->pushItem(0, 12);
+        b->pushItem(0, 8);
+        b->pushItem(0, 2);
+       // b->pushItem(1, 11);
+        b->pushItem(1, 6);
+        b->pushItem(1, 5);
+      //  b->pushItem(3, 10);
+        b->pushItem(2, 4);
+        b->pushItem(2, 3);
+        //b->pushItem(3, 9);
+        b->pushItem(3, 7);
+        b->pushItem(3, 1);
+
+
+
+
+        cout << *b << endl;
+        Solver *s = new Solver(*b, 0, 15);
+        vector<Move> sol = s->solve();
+        if (sol.size() == 0) {
+            cout << "Reseni v pozadovane hloubce nenalezeno." << endl;
+        } else {
+            cout << "Solution:" << endl;
+            for (vector<Move>::iterator it = sol.begin(); it < sol.end(); it++) {
+                cout << *it << endl;
+            }
+            cout << "Celkem tahu: " << sol.size() << endl;
+        }
+
+        delete s;
+        delete b;
+
+        return 0;
+    } catch (const char* ch) {
+        cout << ch << endl;
     }
-    
-    delete s;
-    delete b; 
- 
-    return 0;
-    }catch (const char* ch) {
-        cout<<ch<<endl;
-    }
-    
-    }
+
+}
 

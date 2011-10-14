@@ -20,12 +20,32 @@ private:
     int maxDepth;
     int bestSolutionsDepth;
     int targetTower;
-       
+    
+      /**
+     * Funkce provede expanzi vrchního prvku na zásobníku.
+       */
     void expandTop();
    // void backtrackMoves(void);//nevim jestli budu chtit....zatim asi ne
 public:
+    
+    /**
+     * Konstruktor
+     * @param Board výchozí stav hrací plochy
+     * @param int index věže na které chci získat řešení
+     * @param int maximální délka hledaného řešení(=hloubka prohledávání)
+     */
     Solver(const Board&, int, int);
+    
+    /**
+     * Destruktor
+     */
    ~Solver();
+   
+     /**
+     * Funkce vyřeší zadanou hru
+     * @return vector<Move> posloupnost tahů vedoucích k řešení,
+      * prázdný vector pokud řešení neexistuje
+     */
     vector<Move> solve();
     
 };

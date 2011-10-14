@@ -79,8 +79,7 @@ int Board::size() const {
     return this->towers->size();
 }
 
-/*overi zda je dany tah mozny 
- */
+
 bool Board::isMoveCorrect(Move& m) const {
     //  if(this->size)
 
