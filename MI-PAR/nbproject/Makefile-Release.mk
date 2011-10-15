@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 OBJECTFILES= \
 	${OBJECTDIR}/StackItem.o \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/Input.o \
 	${OBJECTDIR}/Solver.o \
 	${OBJECTDIR}/Board.o \
 	${OBJECTDIR}/Move.o
@@ -74,6 +75,11 @@ ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/Input.o: Input.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Input.o Input.cpp
 
 ${OBJECTDIR}/Solver.o: Solver.cpp 
 	${MKDIR} -p ${OBJECTDIR}

@@ -12,17 +12,17 @@
 using namespace std;
 
 /**
- * třída reprezentující hrací desku
+ * Třída reprezentující hrací desku.
  */
-
 class Board {
 private:
     vector <vector <int>* >* towers;
     int items;
+
 public:
 
     /**
-     * Konstruktor vytvoří prázdnou hrací desku
+     * Konstruktor vytvoří prázdnou hrací desku.
      * @param int udává počet věží
      */
     Board(int);
@@ -40,9 +40,9 @@ public:
 
     /**
      * Funkce rozhodne zda je na dané hrací desce možné provést daný tah
-     * za dodržený všech pravidel.
+     * za dodržení všech pravidel.
      * @param Move tah, jehož uskutečnitelnost posuzujeme.
-     * @return bool 1 pokud je tah možný 0 pokud není možný
+     * @return bool 1 pokud je tah možný, 0 pokud není možný
      */
     bool isMoveCorrect(Move &) const;
 
@@ -61,7 +61,7 @@ public:
     void pushItem(int, int);
 
     /**
-     * Funkce určuje zda je věž kompletní (hledaný stav)
+     * Funkce určuje zda je věž kompletní (hledaný stav).
      * @param int udává pořadí věže, která je kontrolována
      * @return bool 1 pokud je věž kompletní, 0 pokud není kompletní
      */
@@ -110,8 +110,6 @@ public:
      * @param Board vypisovaná deska
      */
     friend ostream& operator<<(ostream&, const Board &);
-
-
 };
 
 

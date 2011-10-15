@@ -12,7 +12,7 @@
 using namespace std;
 
 /*
- * třída představující tah ve hře
+ * Třída představující tah ve hře.
  */
 class Move {
 private:
@@ -22,7 +22,7 @@ private:
 public:
 
     /**
-     * Konstruktor vytvoří nový tah
+     * Konstruktor vytvoří nový tah.
      * @param int index věže, ze které je odebrán vrchní token
      * @param int index věže, na kterou je token umístěn
      * @param int velikost přesunovaného tokenu
@@ -47,7 +47,7 @@ public:
 
     /**
      * Funkce rozhodne zda se jedná o reverzní tahy. Po provedení reverzních 
-     * tahů by na dese nedošlo ke žádné změně
+     * tahů by na desce nedošlo ke žádné změně.
      * @param Move druhý porovnávaný tah
      * @return bool 1 pokud jsou tahy reverzní, 0 pokud nejsou reverzní
      */

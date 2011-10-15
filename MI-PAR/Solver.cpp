@@ -66,17 +66,17 @@ vector<Move> Solver::solve() {
     delete s;
     expandTop();
     int actualDepth = 1;
-   
+
     while (!myStack->empty()) {
         if (solution->size() == dolniMez) {// pokud jsme nasli reseni rovne dolni mezi. už nemůžeme najít lepší
             //  cout<<"terminated...low bound"<<endl;
             break;
         }
-        //  cout << "acualDept: " << actualDepth << endl;
+        // cout << "acualDept: " << actualDepth << endl;
         // cout << "StackItem dpth: " << myStack->top().getDepth() << endl;
-        //cout << "StackSize: " << myStack->size() << endl;
+        // cout << "StackSize: " << myStack->size() << endl;
         if (actualDepth > myStack->top().getDepth()) {//odstrani jiz expandovany stav ze zasobniku pri navratu do nej
-            //   cout << "removing BT: " << myStack->top().getMove() << myStack->top().getDepth() << endl;
+            // cout << "removing BT: " << myStack->top().getMove() << myStack->top().getDepth() << endl;
             myStack->pop();
             actualSolution->pop_back();
             actualDepth -= 1;
@@ -98,14 +98,13 @@ vector<Move> Solver::solve() {
             actualSolution->pop_back(); //
             int dep = myStack->top().getDepth();
 
-          //  while (myStack->top().getDepth() >= dep) {//vzházim ze zásobníku uzly se stejnou hloubkou...nemuže v nich bejt lepší řešení
-                myStack->pop();
-          //  }
+            //  while (myStack->top().getDepth() >= dep) {//vzházim ze zásobníku uzly se stejnou hloubkou...nemuže v nich bejt lepší řešení
+            myStack->pop();
+            //  }
             continue;
-
         }
 
-        if (myStack->top().getDepth() >= bestSolutionsDepth) {// sem ve vetsi hloubce nez moje nejlepsi
+        if (myStack->top().getDepth() >= bestSolutionsDepth) {// jsem ve vetsi hloubce nez moje nejlepsi
             //   cout<<"Delete - MaxDepth"<<endl;
             //  cout << "removing MD: " << myStack->top().getMove() << myStack->top().getDepth() << endl;
 

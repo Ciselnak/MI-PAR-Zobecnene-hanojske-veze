@@ -5,6 +5,7 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>Board.h</itemPath>
+      <itemPath>Input.h</itemPath>
       <itemPath>Move.h</itemPath>
       <itemPath>Solver.h</itemPath>
       <itemPath>StackItem.h</itemPath>
@@ -17,6 +18,7 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>Board.cpp</itemPath>
+      <itemPath>Input.cpp</itemPath>
       <itemPath>Move.cpp</itemPath>
       <itemPath>Solver.cpp</itemPath>
       <itemPath>StackItem.cpp</itemPath>

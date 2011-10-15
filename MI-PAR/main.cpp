@@ -11,42 +11,47 @@
 #include "Board.h"
 #include "StackItem.h"
 #include "Solver.h"
+#include "Input.h"
 using namespace std;
 
 /*
- * main
+ * Vstupni bod programu.
  */
 int main(int argc, char** argv) {
     try {
         cout << "test" << endl;
-        //sem implantovat tabulku empirickejch hloubek
-        //dodat výpočet horná meze pro stanovení hloubky prohledávání
-
-
-        Board *b = new Board(4);
-       
-    //   b->pushItem(0,3);
-    //    b->pushItem(0,1);
-   //    b->pushItem(1,2);
+        // sem implementovat tabulku empirickejch hloubek
+        // dodat výpočet horní meze pro stanovení hloubky prohledávání
         
-      // b->pushItem(0, 12);
-        b->pushItem(0, 8);
-        b->pushItem(0, 2);
-       // b->pushItem(1, 11);
-        b->pushItem(1, 6);
-        b->pushItem(1, 5);
-      //  b->pushItem(3, 10);
-        b->pushItem(2, 4);
-        b->pushItem(2, 3);
+        // Nacteni dat ze souboru.
+        Input input;
+        input.parseFile("input1.txt");        
+        Board *b = input.getBoard();
+        int targetTower = input.getTargetTower();
+        int maxDepth = input.getMaxDepth();
+
+        //Board *b = new Board(4);
+
+        // b->pushItem(0,3);
+        // b->pushItem(0,1);
+        // b->pushItem(1,2);
+
+        // b->pushItem(0, 12);
+        //b->pushItem(0, 8);
+        //b->pushItem(0, 2);
+        // b->pushItem(1, 11);
+        //b->pushItem(1, 6);
+        //b->pushItem(1, 5);
+        //  b->pushItem(3, 10);
+        //b->pushItem(2, 4);
+        //b->pushItem(2, 3);
         //b->pushItem(3, 9);  
-        b->pushItem(3, 7);
-        b->pushItem(3, 1);
-
-
-
-
+        //b->pushItem(3, 7);
+        //b->pushItem(3, 1);
+        
         cout << *b << endl;
-        Solver *s = new Solver(*b, 0, 15);
+        
+        Solver *s = new Solver(*b, targetTower, maxDepth);
         vector<Move> sol = s->solve();
         if (sol.size() == 0) {
             cout << "Reseni v pozadovane hloubce nenalezeno." << endl;
@@ -57,9 +62,10 @@ int main(int argc, char** argv) {
             }
             cout << "Celkem tahu: " << sol.size() << endl;
         }
+        
 
         delete s;
-        delete b;
+        delete b;        
 
         return 0;
     } catch (const char* ch) {

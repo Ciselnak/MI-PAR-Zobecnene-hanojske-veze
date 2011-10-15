@@ -1,7 +1,7 @@
 #include "Board.h"
 
 Board::Board(int number) {
-    if (number <= 0) throw"zaporny pocet vezi!!";
+    if (number <= 0) throw "Pocet vezi musi byt kladny!";
 
     towers = new vector < vector<int>*>;
     for (int i = 0; i < number; i++) {
@@ -30,7 +30,6 @@ Board::~Board() {
         delete *it;
     }
     delete towers;
-
 }
 
 /*
@@ -42,35 +41,32 @@ void Board::pushItem(int tower, int value) {
     this->items++;
 }
 
-int Board::getDolniMez(int tower) const{
-    if((*towers)[tower]->size()==0){
+int Board::getDolniMez(int tower) const {
+    if ((*towers)[tower]->size() == 0) {
         return items;
     }
-    
-    int dobre=0;
-    for(int i = items;i>0;i--){
-        if((items-i)>=(*towers)[tower]->size()){
+
+    int dobre = 0;
+    for (int i = items; i > 0; i--) {
+        if ((items - i) >= (*towers)[tower]->size()) {
             continue;
         }
-        if((*(*towers)[tower])[items-i]==i){
-            dobre+=1;
+        if ((*(*towers)[tower])[items - i] == i) {
+            dobre += 1;
         }
     }
-    return ((*towers)[tower]->size()-dobre)*2 + items-(*towers)[tower]->size();
-  
+    return ((*towers)[tower]->size() - dobre)*2 + items - (*towers)[tower]->size();
 }
 
 bool Board::isTowerComplete(int tower) const {
-    return (*towers)[tower]->size() == items; 
-
+    return (*towers)[tower]->size() == items;
 }
 
-int Board::getTowerTop(int tower) const{
-    if((*towers)[tower]->size()==0){
+int Board::getTowerTop(int tower) const {
+    if ((*towers)[tower]->size() == 0) {
         return 0;
-    }
-    else{
-    return *(*towers)[tower]->rbegin();
+    } else {
+        return *(*towers)[tower]->rbegin();
     }
     //return 2;
 }
@@ -79,18 +75,20 @@ int Board::size() const {
     return this->towers->size();
 }
 
-
 bool Board::isMoveCorrect(Move& m) const {
     //  if(this->size)
 
-    if ((*this->towers)[m.getFrom()]->empty()) {//beru z prazdne veze
+    if ((*this->towers)[m.getFrom()]->empty()) {
+        //beru z prazdne veze
         return false;
     }
-    if ((*this->towers)[m.getTo()]->empty()) {//davam na prazdnou vez
+    if ((*this->towers)[m.getTo()]->empty()) {
+        //davam na prazdnou vez
         return true;
     }
 
-    if ((*this->towers)[m.getFrom()]->back()>(*this->towers)[m.getTo()]->back()) {//na obouv vezich neco je
+    if ((*this->towers)[m.getFrom()]->back()>(*this->towers)[m.getTo()]->back()) {
+        //na obouv vezich neco je
         return false;
     } else {
         return true;
