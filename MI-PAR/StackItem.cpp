@@ -3,7 +3,13 @@ StackItem::StackItem(const Board& b, const Move& m,int d ):board(b),move(m),dep(
 {    
 }
 
+StackItem::StackItem(const StackItem& param):board(param.board),move(param.move),dep(param.dep) {
+   
+}
+
 Board StackItem::getBoard() const{
     return board;
     
 }
+
+

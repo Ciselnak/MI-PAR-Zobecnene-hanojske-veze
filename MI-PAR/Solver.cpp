@@ -15,35 +15,35 @@ static int pushed = 0; //ukládá kolik prvků bylo v průběhu výpočtu ulože
 
 void Solver::expandTop() {
     int dept = myStack->top().getDepth() + 1;
-    Board act = myStack->top().getBoard();
+    Board act = myStack->top().getBoard(); 
 
     Move lastMov = myStack->top().getMove();
     for (int i = 0; i < act.size(); i++) { // vytvořím všechny představitelné tahy
         for (int j = 0; j < act.size(); j++) {
             if (i != j) {
                 Move *m = new Move(i, j, act.getTowerTop(i));
-
-
                 if (act.isMoveCorrect(*m)) {// ověřím zda je tah na dané desce možný
                     if (m->isReverse(lastMov)) {// ověřím jestli tahem nevznikce cyklus délky 1
                         delete m;
                         continue;
                     }
                     Board b = act;
+                    //Board *b = new Board(act);
                     b.performMove(*m);
-                    if ((dept + b.getDolniMez(targetTower)) > bestSolutionsDepth) {//ověřím jestli krok může z definice dolní meze vést k řešení                         
+                    int lowBound = b.getDolniMez(targetTower);
+                    if ((dept + lowBound) > bestSolutionsDepth) {//ověřím jestli krok může z definice dolní meze vést k řešení                         
                         delete m;
                         // cout<<b<<"D"<<b.getDolniMez(targetTower)<<"fik"<<bestSolutionsDepth<<endl;
                         //cout<<act<<act.getDolniMez(targetTower)<<dept<<endl;
                         continue;
                     }
-                    StackItem *s = new StackItem(b, *m, dept);
+                    
+                    StackItem *s = new StackItem(b, *m, dept);                    
                     //  cout << "inserting item: "  << *m <<" dep: "<< dept << endl;
-                    myStack->push(*s);
-                    // cout<<b<<endl;
+                    myStack->push(*s);  
                     pushed += 1;
                     delete m;
-                    delete s;
+                    delete s;           
                 } else {
                     delete m;
                 }

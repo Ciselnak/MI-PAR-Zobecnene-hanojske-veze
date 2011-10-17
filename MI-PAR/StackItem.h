@@ -29,6 +29,13 @@ public:
      * @param int hloubka v prohledávaném prostoru
      */
     StackItem(const Board&, const Move&, int);
+    
+    
+    /**
+     * Kopirujici konstruktor.
+     * @param Puvodni instance.
+     */
+    StackItem(const StackItem&);
 
     /**
      * Funkce vracející hloubku prvku v prohledávaném prostoru

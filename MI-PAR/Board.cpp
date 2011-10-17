@@ -10,7 +10,7 @@ Board::Board(int number) {
     this->items = 0;
 }
 
-Board::Board(const Board& param) {
+Board::Board(const Board& param) {    
     towers = new vector < vector<int>*>;
     for (int i = 0; i < param.towers->size(); i++) {
         towers->push_back(new vector<int>);

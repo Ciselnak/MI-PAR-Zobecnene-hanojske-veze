@@ -52,6 +52,12 @@ public:
      * @return bool 1 pokud jsou tahy reverzní, 0 pokud nejsou reverzní
      */
     bool isReverse(const Move &) const;
+    
+    /**
+     * Vytvori inverzni tah.
+     * @return Inverzni tah.
+     */
+    Move* getReverse();
 
     /**
      * Operátor << pro výpis tahu do výstupního proudu

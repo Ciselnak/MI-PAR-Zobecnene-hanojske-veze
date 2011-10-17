@@ -19,13 +19,22 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     try {
-        cout << "test" << endl;
         // sem implementovat tabulku empirickejch hloubek
         // dodat výpočet horní meze pro stanovení hloubky prohledávání
-        
+
         // Nacteni dat ze souboru.
         Input input;
-        input.parseFile("input1.txt");        
+        input.parseArguments(argc, argv);
+
+        if (!input.getFileName().empty()) {
+            // Bylo zadano nacteni ze souboru.
+            cout << "Nacitam data ze souboru: " << input.getFileName() << endl;
+            input.parseFile();
+        } else {
+            // Nenacita se ze souboru.
+            input.generateBoard();          
+        }
+        
         Board *b = input.getBoard();
         int targetTower = input.getTargetTower();
         int maxDepth = input.getMaxDepth();
@@ -48,9 +57,15 @@ int main(int argc, char** argv) {
         //b->pushItem(3, 9);  
         //b->pushItem(3, 7);
         //b->pushItem(3, 1);
-        
+
+        if (input.getFileName().empty()) {
+            cout << "Pocet tokenu: " << input.getTokensCount() << endl;
+        }
+        cout << "Pocet vezi: " << input.getTowersCount() << endl;
+        cout << "Cilova vez: " << input.getTargetTower() << endl;
+        cout << "Maximalni hloubka: " << input.getMaxDepth() << endl;       
         cout << *b << endl;
-        
+
         Solver *s = new Solver(*b, targetTower, maxDepth);
         vector<Move> sol = s->solve();
         if (sol.size() == 0) {
@@ -62,10 +77,9 @@ int main(int argc, char** argv) {
             }
             cout << "Celkem tahu: " << sol.size() << endl;
         }
-        
 
         delete s;
-        delete b;        
+        delete b;
 
         return 0;
     } catch (const char* ch) {
