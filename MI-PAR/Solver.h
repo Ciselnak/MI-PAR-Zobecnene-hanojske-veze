@@ -18,7 +18,7 @@ using namespace std;
  */
 class Solver {
 private:
-    stack<StackItem>* myStack;
+    vector<StackItem>* myStack;
     Board initState;
     vector<Move>* solution;
     vector<Move>* actualSolution;
@@ -54,6 +54,17 @@ public:
      */
     vector<Move> solve();
 
+    
+    /**
+     * inicialzace MPI a procesu
+     */
+    void init();
+    
+    /**
+     * ypracuje vrchol zasobniku
+     * vraci 0 pokud se v dalsim kroku nema expandovat 1 pokud se ma expandovat
+     */
+    int processTop();
 };
 
 

@@ -12,6 +12,9 @@
 #include "StackItem.h"
 #include "Solver.h"
 #include "Input.h"
+#include "mpi.h"
+
+
 using namespace std;
 
 /*
@@ -19,55 +22,62 @@ using namespace std;
  */
 int main(int argc, char** argv) {
     try {
+        
+        MPI_Init(&argc,&argv);
+      
+
+
+        
         // sem implementovat tabulku empirickejch hloubek
         // dodat výpočet horní meze pro stanovení hloubky prohledávání
 
         // Nacteni dat ze souboru.
-        Input input;
-        input.parseArguments(argc, argv);
-
-        if (!input.getFileName().empty()) {
-            // Bylo zadano nacteni ze souboru.
-            cout << "Nacitam data ze souboru: " << input.getFileName() << endl;
-            input.parseFile();
-        } else {
-            // Nenacita se ze souboru.
-            input.generateBoard();          
-        }
-        
-        Board *b = input.getBoard();
-        int targetTower = input.getTargetTower();
-        int maxDepth = input.getMaxDepth();
+//        Input input;
+//        input.parseArguments(argc, argv);
+//
+//        if (!input.getFileName().empty()) {
+//            // Bylo zadano nacteni ze souboru.
+//            cout << "Nacitam data ze souboru: " << input.getFileName() << endl;
+//            input.parseFile();
+//        } else {
+//            // Nenacita se ze souboru.
+//            input.generateBoard();          
+//        }
+//        
+        Board *b = new Board(4);
+        int targetTower = 2;
+        int maxDepth = 20;
 
         //Board *b = new Board(4);
 
-        // b->pushItem(0,3);
-        // b->pushItem(0,1);
-        // b->pushItem(1,2);
+         b->pushItem(0,3);
+         b->pushItem(0,1);
+       
+            
+     //   b->pushItem(1, 6);
+       b->pushItem(1, 5);
+           b->pushItem(1,2);
 
-        // b->pushItem(0, 12);
-        //b->pushItem(0, 8);
-        //b->pushItem(0, 2);
-        // b->pushItem(1, 11);
-        //b->pushItem(1, 6);
-        //b->pushItem(1, 5);
-        //  b->pushItem(3, 10);
-        //b->pushItem(2, 4);
-        //b->pushItem(2, 3);
-        //b->pushItem(3, 9);  
-        //b->pushItem(3, 7);
-        //b->pushItem(3, 1);
+     
+    
+     //   b->pushItem(3, 7);
+    //    b->pushItem(2, 8);
+        b->pushItem(2, 4);
+        cout<<*b<<endl;
+//        if (input.getFileName().empty()) {
+//            cout << "Pocet tokenu: " << input.getTokensCount() << endl;
+//        }
+//        cout << "Pocet vezi: " << input.getTowersCount() << endl;
+//        cout << "Cilova vez: " << input.getTargetTower() << endl;
+//        cout << "Maximalni hloubka: " << input.getMaxDepth() << endl;       
+//        cout << *b << endl;
 
-        if (input.getFileName().empty()) {
-            cout << "Pocet tokenu: " << input.getTokensCount() << endl;
-        }
-        cout << "Pocet vezi: " << input.getTowersCount() << endl;
-        cout << "Cilova vez: " << input.getTargetTower() << endl;
-        cout << "Maximalni hloubka: " << input.getMaxDepth() << endl;       
-        cout << *b << endl;
-
-        Solver *s = new Solver(*b, targetTower, maxDepth);
-        vector<Move> sol = s->solve();
+        Solver *s = new Solver(*b, targetTower, maxDepth );
+         s->init();
+       vector<Move> sol = s->solve();
+      
+       
+       //tady neni treba vypisovat to pokazdz ale jen pro mastra...mozna nebudeme vypisovat vubec
         if (sol.size() == 0) {
             cout << "Reseni v pozadovane hloubce nenalezeno." << endl;
         } else {
@@ -77,10 +87,11 @@ int main(int argc, char** argv) {
             }
             cout << "Celkem tahu: " << sol.size() << endl;
         }
-
+        
         delete s;
         delete b;
 
+        MPI_Finalize();
         return 0;
     } catch (const char* ch) {
         cout << ch << endl;
